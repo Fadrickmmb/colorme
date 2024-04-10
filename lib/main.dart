@@ -9,49 +9,112 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Row(
-            children: const <Widget>[
-              Text(
-                "Colorme.",
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
-            ),
-          ]
-          ),
-          Row(
-            children: const <Widget>[
-              Text(
-                'IMAGE HERE',
-            ),
-            ]
-          ),
-          Row(
-            children: const <Widget>[
-              Text(
-              '1st Step'
-            ),
-            ]
-          ),
-          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              ElevatedButton(
+              Container(
+                  margin: const EdgeInsets.only(
+                    top: 100.0
+                  ),
+                  child: const Text(
+                    "colorme.",
+                    style: TextStyle(
+                      fontSize: 40,
+                      fontFamily: 'LeagueSpartan',
+                      fontWeight: FontWeight.w800,
+                    ),
+                  ),
+              )]
+              ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Expanded(
+                  flex: 10,
+                  child: Container(
+                    margin: const EdgeInsets.only(
+                        top: 20.0
+                    ),
+                    alignment: Alignment.center,
+                    height: 350,
+
+                    child: Align(
+                      alignment: Alignment.centerRight,
+                      child: Image.asset(
+                        'assets/takeSelfie.png',
+                        fit: BoxFit.fitWidth,
+                      ) ,
+                    )
+                  )
+              ),
+            ]
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Container(
+                height: 100,
+                margin: const EdgeInsets.only(
+                  top: 50.0,
+                ),
+                child: RichText(
+                  text: TextSpan(
+                    text: '1st Step\n',
+                    style: TextStyle(
+                      fontSize: 35,
+                      fontFamily: 'LeagueSpartan',
+                      fontWeight: FontWeight.w700,
+                      foreground: Paint()
+                        ..style = PaintingStyle.stroke
+                        ..strokeWidth = 1
+                    ),
+                    children: <TextSpan>[
+                      TextSpan(
+                          text: 'Take a Selfie',
+                          style: TextStyle(
+                            fontSize: 50,
+                            foreground: Paint()
+                              ..style = PaintingStyle.fill
+                          )
+                      ),
+                    ]
+                  ),
+
+                ),
+                ),
+            ]
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Container(
+                margin: const EdgeInsets.only(
+                  top: 25.0,
+                ),
+                child: ElevatedButton(
                   onPressed: (){
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => Instructions()),
+                      context,
+                      MaterialPageRoute(builder: (context) => Instructions()),
                     );
                   },
-                child: const Text('Start Now'),
-              )
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12.0)
+                    ),
+                    backgroundColor: Colors.deepOrange
+                      ),
+
+                    child: Text(
+                      'Start Now',
+                ),
+                    ),
+                  ),
             ],
               )
-
         ]
+
       ),
     );
   }
