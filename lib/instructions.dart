@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:colorme/takeSelfie.dart';
+import 'package:camera/camera.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class Instructions extends StatefulWidget {
   Instructions({Key? key}) : super(key: key);
@@ -122,6 +124,8 @@ class _InstructionsState extends State<Instructions> {
     );
   }
 }
+
+
 
 void main() {
   runApp(Instructions());
