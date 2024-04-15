@@ -46,7 +46,7 @@ class _TakeSelfieState extends State<TakeSelfie> {
           Expanded(
               child: CameraPreview(_controller!),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Row(
@@ -58,7 +58,7 @@ class _TakeSelfieState extends State<TakeSelfie> {
 
                     });
                   },
-                icon: Icon(Icons.switch_camera),
+                icon: const Icon(Icons.switch_camera),
               ),
               ElevatedButton(
                   onPressed: () async{
@@ -75,11 +75,11 @@ class _TakeSelfieState extends State<TakeSelfie> {
                     }
                   },
                 style: ElevatedButton.styleFrom(
-                  shape: CircleBorder(),
-                  padding: EdgeInsets.all(20.0),
+                  shape: const CircleBorder(),
+                  padding: const EdgeInsets.all(20.0),
                   backgroundColor: Colors.deepOrange,
                 ),
-                child: Icon(Icons.camera_alt),
+                child: const Icon(Icons.camera_alt),
               ),
             ],
           ),
@@ -100,7 +100,7 @@ class DisplayPhotoScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image.file(photo),
-          SizedBox(height: 20),
+
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -108,13 +108,25 @@ class DisplayPhotoScreen extends StatelessWidget {
                   onPressed: (){
                     Navigator.pop(context);
                   },
-                child: Text('Retake'),
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12.0)
+                  ),
+                  backgroundColor: Colors.deepOrange
+                ),
+                child: const Text('Try Again'),
               ),
               ElevatedButton(
                   onPressed: (){
                     Navigator.pop(context);
                   },
-                child: Text('Use Photo'),
+                style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12.0)
+                    ),
+                    backgroundColor: Colors.deepOrange
+                ),
+                child: const Text('Use This Photo'),
               ),
             ],
           )

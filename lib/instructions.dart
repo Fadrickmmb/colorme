@@ -69,7 +69,7 @@ class _InstructionsState extends State<Instructions> {
                 },
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: imagePaths.map((url) {
@@ -77,7 +77,7 @@ class _InstructionsState extends State<Instructions> {
                 return Container(
                   width: 12.0,
                   height: 12.0,
-                  margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
+                  margin: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: _currentIndex == index ? Colors.black : Colors.grey.shade400,
@@ -85,12 +85,12 @@ class _InstructionsState extends State<Instructions> {
                 );
               }).toList(),
             ),
-            SizedBox(height: 25),
+            const SizedBox(height: 25),
             ElevatedButton(
               onPressed: (){
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => TakeSelfie()),
+                  MaterialPageRoute(builder: (context) => const TakeSelfie()),
                 );
               },
               style: ElevatedButton.styleFrom(
@@ -99,7 +99,7 @@ class _InstructionsState extends State<Instructions> {
                   ),
                   backgroundColor: Colors.deepOrange
               ),
-              child: Text('Take Selfie'),
+              child: const Text('Take Selfie'),
             ),
             Expanded(
               child: Stack(

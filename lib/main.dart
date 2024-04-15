@@ -106,7 +106,7 @@ class MyApp extends StatelessWidget {
                     backgroundColor: Colors.deepOrange
                       ),
 
-                    child: Text(
+                    child: const Text(
                       'Start Now',
                 ),
                     ),
@@ -121,7 +121,7 @@ class MyApp extends StatelessWidget {
 }
 
 void main() {
-  runApp(MaterialApp(
+  runApp(const MaterialApp(
     home: MyApp(),
   ));
 }
