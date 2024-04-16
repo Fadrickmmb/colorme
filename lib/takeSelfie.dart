@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'dart:io';
+import 'secondStep.dart';
 
 class TakeSelfie extends StatefulWidget {
   const TakeSelfie({Key? key}) : super(key: key);
@@ -99,7 +100,31 @@ class DisplayPhotoScreen extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.file(photo),
+          const SizedBox(height: 50),
+          const Text(
+            "colorme.",
+            style: TextStyle(
+              fontSize: 40,
+              fontFamily: 'LeagueSpartan',
+              fontWeight: FontWeight.w800,
+            ),
+          ),
+          Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              margin: const EdgeInsets.only(
+                top: 10
+              ),
+              height: 400,
+              child: Image.file(
+                  photo,
+                fit: BoxFit.fitWidth,
+              ),
+            )
+          ],
+          ),
+
 
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -110,26 +135,54 @@ class DisplayPhotoScreen extends StatelessWidget {
                   },
                 style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12.0)
+                    borderRadius: BorderRadius.circular(20.0)
                   ),
-                  backgroundColor: Colors.deepOrange
+                  backgroundColor: Colors.orangeAccent,
+                  textStyle: const TextStyle(
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.w600,
+                    ),
                 ),
+
                 child: const Text('Try Again'),
               ),
               ElevatedButton(
                   onPressed: (){
-                    Navigator.pop(context);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const SecondStep()),
+                    );
                   },
                 style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12.0)
+                        borderRadius: BorderRadius.circular(20.0)
                     ),
-                    backgroundColor: Colors.deepOrange
+                    backgroundColor: Colors.deepOrange,
+                  textStyle: const TextStyle(
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
                 child: const Text('Use This Photo'),
               ),
             ],
-          )
+          ),
+          Expanded(
+                flex: 10,
+                  child: Stack(
+                    alignment: Alignment.bottomRight,
+                    children: [
+                      Align(
+                        alignment: Alignment.bottomRight,
+                        child: Positioned.fill(
+                            child: Image.asset(
+                              "assets/takeSelfie.png"
+                            ),
+                        ),
+                      )
+                    ],
+                  )
+              ),
         ],
       ),
     );
