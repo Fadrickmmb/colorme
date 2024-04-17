@@ -9,12 +9,12 @@ class ChooseColors extends StatefulWidget {
 }
 
 class _ChooseColorsState extends State<ChooseColors> {
-  double circle1X = 0; // X-coordinate of circle 1
-  double circle1Y = 0; // Y-coordinate of circle 1
-  double circle2X = 0; // X-coordinate of circle 2
-  double circle2Y = 0; // Y-coordinate of circle 2
-  double circle3X = 0; // X-coordinate of circle 3
-  double circle3Y = 0; // Y-coordinate of circle 3
+  double circle1X = 0;
+  double circle1Y = 0;
+  double circle2X = 0;
+  double circle2Y = 0;
+  double circle3X = 0;
+  double circle3Y = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -24,31 +24,131 @@ class _ChooseColorsState extends State<ChooseColors> {
           const SizedBox(
             height: 50.0,
           ),
-          Expanded(
+          Container(
+            height: MediaQuery.of(context).size.height / 2,
             child: Stack(
               children: [
-                Image.file(
-                  widget.photo,
-                  fit: BoxFit.cover, // Image takes the entire width of the device
-                  width: double.infinity,
+                AspectRatio(
+                  aspectRatio: 1 / 1,
+                  child: Image.file(
+                    widget.photo,
+                    fit: BoxFit.cover,
+                    width: double.infinity,
+                  ),
                 ),
                 Positioned(
-                  left: circle1X,
-                  top: circle1Y,
-                  child: _buildDraggableCircle(1),
+                  left: circle1X - 10,
+                  top: circle1Y - 10,
+                  child: GestureDetector(
+                    onPanUpdate: (details) {
+                      setState(() {
+                        circle1X += details.delta.dx;
+                        circle1Y += details.delta.dy;
+                      });
+                    },
+                    child: Container(
+                      width: 20,
+                      height: 20,
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.white, width: 1),
+                        shape: BoxShape.circle,
+                      ),
+                    ),
+                  ),
                 ),
                 Positioned(
-                  left: circle2X,
-                  top: circle2Y,
-                  child: _buildDraggableCircle(2),
+                  left: circle2X - 10,
+                  top: circle2Y - 10,
+                  child: GestureDetector(
+                    onPanUpdate: (details) {
+                      setState(() {
+                        circle2X += details.delta.dx;
+                        circle2Y += details.delta.dy;
+                      });
+                    },
+                    child: Container(
+                      width: 20,
+                      height: 20,
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.white, width: 1),
+                        shape: BoxShape.circle,
+                      ),
+                    ),
+                  ),
                 ),
                 Positioned(
-                  left: circle3X,
-                  top: circle3Y,
-                  child: _buildDraggableCircle(3),
+                  left: circle3X - 10,
+                  top: circle3Y - 10,
+                  child: GestureDetector(
+                    onPanUpdate: (details) {
+                      setState(() {
+                        circle3X += details.delta.dx;
+                        circle3Y += details.delta.dy;
+                      });
+                    },
+                    child: Container(
+                      width: 20,
+                      height: 20,
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.white, width: 1),
+                        shape: BoxShape.circle,
+                      ),
+                    ),
+                  ),
+                ),
+                Positioned(
+                  left: circle1X - 30,
+                  top: circle1Y - 40,
+                  child: Container(
+                    padding: EdgeInsets.all(5),
+                    color: Colors.black.withOpacity(0.0),
+                    child: const Text(
+                      "Hair",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+                Positioned(
+                  left: circle2X - 30,
+                  top: circle2Y - 40,
+                  child: Container(
+                    padding: EdgeInsets.all(5),
+                    color: Colors.black.withOpacity(0.0),
+                    child: const Text(
+                      "Eyes",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+                Positioned(
+                  left: circle3X - 30,
+                  top: circle3Y - 40,
+                  child: Container(
+                    padding: EdgeInsets.all(5),
+                    color: Colors.black.withOpacity(0.0),
+                    child: const Text(
+                      "Skin",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
                 ),
               ],
             ),
+          ),
+          const SizedBox(
+            height: 10.0,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -56,10 +156,11 @@ class _ChooseColorsState extends State<ChooseColors> {
               Text(
                 "Instructions\n",
                 style: TextStyle(
-                    fontSize: 37,
-                    fontFamily: 'LeagueSpartan',
-                    fontWeight: FontWeight.w700,
-                    foreground: Paint()..style = PaintingStyle.fill),
+                  fontSize: 37,
+                  fontFamily: 'LeagueSpartan',
+                  fontWeight: FontWeight.w700,
+                  foreground: Paint()..style = PaintingStyle.fill,
+                ),
               ),
             ],
           ),
@@ -69,41 +170,47 @@ class _ChooseColorsState extends State<ChooseColors> {
               Text(
                 "Move the circles to catch the colors",
                 style: TextStyle(
-                    fontSize: 15,
-                    fontFamily: 'LeagueSpartan',
-                    fontWeight: FontWeight.w400,
-                    foreground: Paint()..style = PaintingStyle.fill),
+                  fontSize: 15,
+                  fontFamily: 'LeagueSpartan',
+                  fontWeight: FontWeight.w400,
+                  foreground: Paint()..style = PaintingStyle.fill,
+                ),
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Container(
+                width: 50,
+                height: 50,
+                decoration: BoxDecoration(
+                  color: Colors.grey,
+                  border: Border.all(color: Colors.black, width: 1),
+                  shape: BoxShape.circle,
+                ),
+              ),
+              Container(
+                width: 50,
+                height: 50,
+                decoration: BoxDecoration(
+                  color: Colors.grey,
+                  border: Border.all(color: Colors.black, width: 1),
+                  shape: BoxShape.circle,
+                ),
+              ),
+              Container(
+                width: 50,
+                height: 50,
+                decoration: BoxDecoration(
+                  color: Colors.grey,
+                  border: Border.all(color: Colors.black, width: 1),
+                  shape: BoxShape.circle,
+                ),
               ),
             ],
           ),
         ],
-      ),
-    );
-  }
-
-  Widget _buildDraggableCircle(int circleIndex) {
-    return GestureDetector(
-      onPanUpdate: (details) {
-        setState(() {
-          if (circleIndex == 1) {
-            circle1X += details.delta.dx;
-            circle1Y += details.delta.dy;
-          } else if (circleIndex == 2) {
-            circle2X += details.delta.dx;
-            circle2Y += details.delta.dy;
-          } else if (circleIndex == 3) {
-            circle3X += details.delta.dx;
-            circle3Y += details.delta.dy;
-          }
-        });
-      },
-      child: Container(
-        width: 20,
-        height: 20,
-        decoration: BoxDecoration(
-          border: Border.all(color: Colors.white, width: 1), // Border color and width
-          shape: BoxShape.circle,
-        ),
       ),
     );
   }
