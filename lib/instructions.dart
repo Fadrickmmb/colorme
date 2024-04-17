@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:colorme/takeSelfie.dart';
-import 'package:camera/camera.dart';
-import 'package:permission_handler/permission_handler.dart';
 
 class Instructions extends StatefulWidget {
-  Instructions({Key? key}) : super(key: key);
+  const Instructions({Key? key}) : super(key: key);
 
   @override
   State<Instructions> createState() => _InstructionsState();
@@ -27,8 +25,8 @@ class _InstructionsState extends State<Instructions> {
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(height: 100),
-            Text(
+            const SizedBox(height: 100),
+            const Text(
               "colorme.",
               style: TextStyle(
                 fontSize: 40,
@@ -36,8 +34,8 @@ class _InstructionsState extends State<Instructions> {
                 fontWeight: FontWeight.w800,
               ),
             ),
-            SizedBox(height: 35),
-            Text(
+            const SizedBox(height: 35),
+            const Text(
               "Instructions",
               style: TextStyle(
                 fontSize: 37,
@@ -45,7 +43,7 @@ class _InstructionsState extends State<Instructions> {
                 fontWeight: FontWeight.w700,
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             CarouselSlider.builder(
               itemCount: imagePaths.length,
               itemBuilder: (BuildContext context, int index, int realIndex) {
@@ -60,8 +58,8 @@ class _InstructionsState extends State<Instructions> {
                 viewportFraction: 1.0,
                 enlargeCenterPage: false,
                 autoPlay: true,
-                autoPlayInterval: Duration(seconds: 2),
-                autoPlayAnimationDuration: Duration(milliseconds: 800),
+                autoPlayInterval: const Duration(seconds: 2),
+                autoPlayAnimationDuration: const Duration(milliseconds: 800),
                 onPageChanged: (index, reason) {
                   setState(() {
                     _currentIndex = index;

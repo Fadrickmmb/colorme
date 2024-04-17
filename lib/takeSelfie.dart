@@ -150,7 +150,7 @@ class DisplayPhotoScreen extends StatelessWidget {
                   onPressed: (){
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const SecondStep()),
+                      MaterialPageRoute(builder: (context) => SecondStep(photo: photo)),
                     );
                   },
                 style: ElevatedButton.styleFrom(

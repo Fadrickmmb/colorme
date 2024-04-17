@@ -1,8 +1,10 @@
+import 'dart:io';
 import 'package:colorme/chooseColors.dart';
 import 'package:flutter/material.dart';
 
 class SecondStep extends StatelessWidget {
-  const SecondStep({Key? key}) : super(key: key);
+  final File photo;
+  const SecondStep({Key? key, required this.photo}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +89,7 @@ class SecondStep extends StatelessWidget {
                   onPressed: (){
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const ChooseColors()),
+                      MaterialPageRoute(builder: (context) => ChooseColors(photo: photo)),
                     );
                   },
                   style: ElevatedButton.styleFrom(
