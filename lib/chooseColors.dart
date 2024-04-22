@@ -9,12 +9,17 @@ class ChooseColors extends StatefulWidget {
 }
 
 class _ChooseColorsState extends State<ChooseColors> {
-  double circle1X = 0;
-  double circle1Y = 0;
-  double circle2X = 0;
-  double circle2Y = 0;
-  double circle3X = 0;
-  double circle3Y = 0;
+  Color hairColor = Colors.white;
+  Color eyesColor = Colors.white;
+  Color skinColor = Colors.white;
+
+  void selectColor(String colorName) {
+    setState(() {
+      hairColor = colorName == 'hair' ? Colors.grey : Colors.white;
+      eyesColor = colorName == 'eyes' ? Colors.grey : Colors.white;
+      skinColor = colorName == 'skin' ? Colors.grey : Colors.white;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,125 +31,13 @@ class _ChooseColorsState extends State<ChooseColors> {
           ),
           Container(
             height: MediaQuery.of(context).size.height / 2,
-            child: Stack(
-              children: [
-                AspectRatio(
-                  aspectRatio: 1 / 1,
-                  child: Image.file(
-                    widget.photo,
-                    fit: BoxFit.cover,
-                    width: double.infinity,
-                  ),
-                ),
-                Positioned(
-                  left: circle1X - 10,
-                  top: circle1Y - 10,
-                  child: GestureDetector(
-                    onPanUpdate: (details) {
-                      setState(() {
-                        circle1X += details.delta.dx;
-                        circle1Y += details.delta.dy;
-                      });
-                    },
-                    child: Container(
-                      width: 20,
-                      height: 20,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.white, width: 1),
-                        shape: BoxShape.circle,
-                      ),
-                    ),
-                  ),
-                ),
-                Positioned(
-                  left: circle2X - 10,
-                  top: circle2Y - 10,
-                  child: GestureDetector(
-                    onPanUpdate: (details) {
-                      setState(() {
-                        circle2X += details.delta.dx;
-                        circle2Y += details.delta.dy;
-                      });
-                    },
-                    child: Container(
-                      width: 20,
-                      height: 20,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.white, width: 1),
-                        shape: BoxShape.circle,
-                      ),
-                    ),
-                  ),
-                ),
-                Positioned(
-                  left: circle3X - 10,
-                  top: circle3Y - 10,
-                  child: GestureDetector(
-                    onPanUpdate: (details) {
-                      setState(() {
-                        circle3X += details.delta.dx;
-                        circle3Y += details.delta.dy;
-                      });
-                    },
-                    child: Container(
-                      width: 20,
-                      height: 20,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.white, width: 1),
-                        shape: BoxShape.circle,
-                      ),
-                    ),
-                  ),
-                ),
-                Positioned(
-                  left: circle1X - 30,
-                  top: circle1Y - 40,
-                  child: Container(
-                    padding: EdgeInsets.all(5),
-                    color: Colors.black.withOpacity(0.0),
-                    child: const Text(
-                      "Hair",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
-                Positioned(
-                  left: circle2X - 30,
-                  top: circle2Y - 40,
-                  child: Container(
-                    padding: EdgeInsets.all(5),
-                    color: Colors.black.withOpacity(0.0),
-                    child: const Text(
-                      "Eyes",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
-                Positioned(
-                  left: circle3X - 30,
-                  top: circle3Y - 40,
-                  child: Container(
-                    padding: EdgeInsets.all(5),
-                    color: Colors.black.withOpacity(0.0),
-                    child: const Text(
-                      "Skin",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
+            child: AspectRatio(
+              aspectRatio: 1 / 1,
+              child: Image.file(
+                widget.photo,
+                fit: BoxFit.cover,
+                width: double.infinity,
+              ),
             ),
           ),
           const SizedBox(
@@ -168,7 +61,7 @@ class _ChooseColorsState extends State<ChooseColors> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "Move the circles to catch the colors",
+                "Choose the color you want to catch",
                 style: TextStyle(
                   fontSize: 15,
                   fontFamily: 'LeagueSpartan',
@@ -178,40 +71,47 @@ class _ChooseColorsState extends State<ChooseColors> {
               ),
             ],
           ),
+          const SizedBox(
+            height: 15.0,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Container(
-                width: 50,
-                height: 50,
-                decoration: BoxDecoration(
-                  color: Colors.grey,
-                  border: Border.all(color: Colors.black, width: 1),
-                  shape: BoxShape.circle,
-                ),
-              ),
-              Container(
-                width: 50,
-                height: 50,
-                decoration: BoxDecoration(
-                  color: Colors.grey,
-                  border: Border.all(color: Colors.black, width: 1),
-                  shape: BoxShape.circle,
-                ),
-              ),
-              Container(
-                width: 50,
-                height: 50,
-                decoration: BoxDecoration(
-                  color: Colors.grey,
-                  border: Border.all(color: Colors.black, width: 1),
-                  shape: BoxShape.circle,
-                ),
-              ),
+              buildColorOption('hair', hairColor),
+              buildColorOption('eyes', eyesColor),
+              buildColorOption('skin', skinColor),
             ],
           ),
         ],
       ),
     );
+  }
+
+  Widget buildColorOption(String colorName, Color color) {
+    return GestureDetector(
+      onTap: () {
+        selectColor(colorName);
+      },
+      child: Column(
+        children: [
+          Text(colorName.capitalizeFirst()),
+          Container(
+            width: 50,
+            height: 50,
+            decoration: BoxDecoration(
+              color: color,
+              border: Border.all(color: Colors.black, width: 1),
+              shape: BoxShape.circle,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+extension StringExtension on String {
+  String capitalizeFirst() {
+    return "${this[0].toUpperCase()}${this.substring(1)}";
   }
 }
