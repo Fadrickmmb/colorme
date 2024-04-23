@@ -38,8 +38,8 @@ dependencies:
   carousel_slider: ^4.2.1
   camera: ^0.10.5+5
   permission_handler: ^11.0.1
-  flex_color_picker: ^3.3.0
-  image: ^4.1.7
+  pick_color: ^0.0.4
+
 
 dev_dependencies:
   flutter_test:
