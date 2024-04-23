@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:pick_color/pick_color.dart';
-import 'chooseHair.dart';
+import 'chooseEyes.dart';
 
-class ChooseColors extends StatefulWidget {
+class ChooseHair extends StatefulWidget {
   final File photo;
-  const ChooseColors({Key? key, required this.photo}) : super(key: key);
+  final String skinHex;
+  final Color skinColor;
+  const ChooseHair({Key? key, required this.photo, required this.skinHex, required this.skinColor}) : super(key: key);
+
   @override
-  State<ChooseColors> createState() => _ChooseColorsState();
+  State<ChooseHair> createState() => _ChooseHairState();
 }
 
-class _ChooseColorsState extends State<ChooseColors> {
-  Color skinColor = Colors.white;
+class _ChooseHairState extends State<ChooseHair> {
+  Color hairColor = Colors.white;
   PickerResponse? userResponse;
-  late String skinHex;
-
+  late String hairHex;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,8 +37,8 @@ class _ChooseColorsState extends State<ChooseColors> {
                 onChanged: (response){
                   setState(() {
                     userResponse = response;
-                    skinColor = response.selectionColor;
-                    skinHex = response.hexCode;
+                    hairColor = response.selectionColor;
+                    hairHex = response.hexCode;
                   });
                 }
             ),
@@ -48,7 +50,7 @@ class _ChooseColorsState extends State<ChooseColors> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "Select your Skin Color\n",
+                "Select your Hair Color\n",
                 style: TextStyle(
                   fontSize: 37,
                   fontFamily: 'LeagueSpartan',
@@ -80,7 +82,7 @@ class _ChooseColorsState extends State<ChooseColors> {
             children: [
               Column(
                 children: [
-                  const Text("Selected Skin Color"),
+                  Text("Hair Color Selected"),
                   Container(
                     width: 50,
                     height: 50,
@@ -109,10 +111,13 @@ class _ChooseColorsState extends State<ChooseColors> {
                   onPressed: (){
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => ChooseHair(
+                      MaterialPageRoute(builder: (context) => ChooseEyes(
                           photo: widget.photo,
-                          skinColor: skinColor,
-                          skinHex: skinHex
+                          skinColor: widget.skinColor,
+                          skinHex: widget.skinHex,
+                          hairColor: hairColor,
+                          hairHex: hairHex,
+
                       )),
                     );
                   },
@@ -126,6 +131,3 @@ class _ChooseColorsState extends State<ChooseColors> {
     );
   }
 }
-
-
-
