@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:pick_color/pick_color.dart';
-
+import 'result.dart';
 
 class ChooseEyes extends StatefulWidget {
   final File photo;
@@ -107,6 +107,26 @@ class _ChooseEyesState extends State<ChooseEyes> {
           const SizedBox(
             height: 35,
           ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              ElevatedButton(
+                  onPressed: (){
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Result(
+                        skinHex: widget.skinHex,
+                        hairHex: widget.hairHex,
+                        eyeHex: eyeHex
+                      )),
+                    );
+                  },
+                  child:
+                  const Text("Next")
+              ),
+            ],
+          ),
+
         ],
       ),
     );

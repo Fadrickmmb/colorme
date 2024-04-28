@@ -126,6 +126,3 @@ class _ChooseColorsState extends State<ChooseColors> {
     );
   }
 }
-
-
-
