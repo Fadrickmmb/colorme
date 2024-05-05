@@ -50,6 +50,9 @@ class MyApp extends StatelessWidget {
               ),
             ]
           ),
+          SizedBox(
+            height: 40,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -85,13 +88,15 @@ class MyApp extends StatelessWidget {
                 ),
             ]
           ),
+          SizedBox(
+            height: 15,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Container(
-                margin: const EdgeInsets.only(
-                  top: 25.0,
-                ),
+            children: [
+              SizedBox(
+                width: 180,
+                height: 45,
                 child: ElevatedButton(
                   onPressed: (){
                     Navigator.push(
@@ -100,17 +105,24 @@ class MyApp extends StatelessWidget {
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12.0)
-                    ),
-                    backgroundColor: Colors.deepOrange
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50.0)
                       ),
+                      backgroundColor: Colors.deepOrange
+                  ),
 
-                    child: const Text(
-                      'Start Now',
-                ),
+                  child: const Text(
+                    'Take Selfie',
+                    style: TextStyle(
+                        fontSize: 25,
+                        fontFamily: 'LeagueSpartan',
+                        fontWeight: FontWeight.w700
                     ),
                   ),
+                ),
+              ),
+
+
             ],
               )
         ]

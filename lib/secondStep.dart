@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 class SecondStep extends StatelessWidget {
   final File photo;
+  final String buttonHex = "#047FC6";
   const SecondStep({Key? key, required this.photo}) : super(key: key);
 
   @override
@@ -78,13 +79,14 @@ class SecondStep extends StatelessWidget {
                 ),
               ]
           ),
+          SizedBox(
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Container(
-                margin: const EdgeInsets.only(
-                  top: 25.0,
-                ),
+            children: [
+              SizedBox(
+                width: 180,
+                height: 45,
                 child: ElevatedButton(
                   onPressed: (){
                     Navigator.push(
@@ -94,13 +96,18 @@ class SecondStep extends StatelessWidget {
                   },
                   style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12.0)
+                          borderRadius: BorderRadius.circular(50.0)
                       ),
-                      backgroundColor: Colors.blueAccent
+                      backgroundColor: Color(int.parse(buttonHex.substring(1, 7), radix: 16) + 0xFF000000),
                   ),
 
                   child: const Text(
                     'Start Now',
+                    style: TextStyle(
+                        fontSize: 25,
+                        fontFamily: 'LeagueSpartan',
+                        fontWeight: FontWeight.w700
+                    ),
                   ),
                 ),
               ),

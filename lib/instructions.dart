@@ -84,21 +84,33 @@ class _InstructionsState extends State<Instructions> {
               }).toList(),
             ),
             const SizedBox(height: 25),
-            ElevatedButton(
-              onPressed: (){
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const TakeSelfie()),
-                );
-              },
-              style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12.0)
-                  ),
-                  backgroundColor: Colors.deepOrange
+            SizedBox(
+              width: 180,
+              height: 45,
+              child: ElevatedButton(
+                onPressed: (){
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const TakeSelfie()),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50.0)
+                    ),
+                    backgroundColor: Colors.deepOrange
+                ),
+                child: const Text(
+                    'Take Selfie',
+                      style: TextStyle(
+                        fontSize: 25,
+                        fontFamily: 'LeagueSpartan',
+                        fontWeight: FontWeight.w700
+                      ),
+                ),
               ),
-              child: const Text('Take Selfie'),
             ),
+
             Expanded(
               child: Stack(
                 alignment: Alignment.bottomRight,

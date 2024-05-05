@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:pick_color/pick_color.dart';
 import 'chooseEyes.dart';
+import 'package:curved_text/curved_text.dart';
 
 class ChooseHair extends StatefulWidget {
   final File photo;
@@ -15,6 +16,8 @@ class ChooseHair extends StatefulWidget {
 
 class _ChooseHairState extends State<ChooseHair> {
   Color hairColor = Colors.white;
+  String buttonHex = "#047FC6";
+  String placeholderColor = '#D9D9D9';
   PickerResponse? userResponse;
   late String hairHex;
   @override
@@ -22,17 +25,9 @@ class _ChooseHairState extends State<ChooseHair> {
     return Scaffold(
       body: Column(
         children: [
-          const SizedBox(
-            height: 50.0,
-          ),
           Container(
-            height: MediaQuery.of(context).size.height / 2,
+            height: MediaQuery.of(context).size.height / 1.6,
             child: ColorPicker(
-                child: Image.file(
-                  widget.photo,
-                  fit: BoxFit.cover,
-                  width: double.infinity,
-                ),
                 showMarker: false,
                 onChanged: (response){
                   setState(() {
@@ -40,62 +35,90 @@ class _ChooseHairState extends State<ChooseHair> {
                     hairColor = response.selectionColor;
                     hairHex = response.hexCode;
                   });
-                }
+                },
+                child: Image.file(
+                  widget.photo,
+                  fit: BoxFit.cover,
+                  width: double.infinity,
+                )
             ),
           ),
           const SizedBox(
-            height: 10.0,
+            height: 25.0,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                "Select your Hair Color\n",
-                style: TextStyle(
-                  fontSize: 37,
-                  fontFamily: 'LeagueSpartan',
-                  fontWeight: FontWeight.w700,
-                  foreground: Paint()..style = PaintingStyle.fill,
-                ),
-              ),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                "Touch the screen to select it",
-                style: TextStyle(
-                  fontSize: 15,
-                  fontFamily: 'LeagueSpartan',
-                  fontWeight: FontWeight.w400,
-                  foreground: Paint()..style = PaintingStyle.fill,
-                ),
+              Column(
+                children: [
+                  RichText(
+                    text: TextSpan(
+                        style: TextStyle(
+                            fontSize: 26,
+                            fontFamily: 'LeagueSpartan',
+                            fontWeight: FontWeight.w700,
+                            foreground: Paint()
+                              ..style = PaintingStyle.stroke
+                              ..strokeWidth = 1
+                        ),
+                        children: <TextSpan>[
+                          const TextSpan(
+                              text: "Select your "
+                          ),
+                          TextSpan(
+                            text: "Hair Color",
+                            style: TextStyle(
+                              foreground: Paint()..style = PaintingStyle.fill,
+                            ),
+                          ),
+                        ]
+                    ),
+                  ),
+                  SizedBox(
+                    height: 3,
+                  ),
+                  Text(
+                    "Touch the screen to select it",
+                    style: TextStyle(
+                      fontSize: 17,
+                      fontFamily: 'LeagueSpartan',
+                      fontWeight: FontWeight.w400,
+                      foreground: Paint()..style = PaintingStyle.fill,
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
           const SizedBox(
-            height: 35.0,
+            height: 25.0,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Column(
                 children: [
-                  Text("Hair Color Selected"),
+                  CurvedText(
+                      curvature: 0.016,
+                      text: "Selected Hair Color",
+                      textStyle: TextStyle(
+                        fontSize: 17,
+                        fontFamily: 'LeagueSpartan',
+                        fontWeight: FontWeight.w800,
+                        foreground: Paint()..style = PaintingStyle.fill,
+                      ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
                   Container(
-                    width: 50,
-                    height: 50,
+                    width: 100,
+                    height: 100,
                     decoration: BoxDecoration(
-                      color: userResponse?.selectionColor ?? Colors.red,
-                      border: Border.all(color: Colors.black, width: 1),
+                      color: userResponse?.selectionColor ?? Color(int.parse(placeholderColor.substring(1, 7), radix: 16) + 0xFF000000),
+                      //border: Border.all(color: Colors.black, width: 1),
                       shape: BoxShape.circle,
                     ),
-                  ),
-                  Text(
-                    "Hex Code:- ${userResponse?.hexCode ??  ''}",
-                    style: const TextStyle(
-                        color: Colors.black, fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
@@ -107,23 +130,40 @@ class _ChooseHairState extends State<ChooseHair> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              ElevatedButton(
-                  onPressed: (){
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => ChooseEyes(
+              SizedBox(
+                width: 120,
+                height: 30,
+                child: ElevatedButton(
+                    onPressed: (){
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ChooseEyes(
                           photo: widget.photo,
                           skinColor: widget.skinColor,
                           skinHex: widget.skinHex,
                           hairColor: hairColor,
                           hairHex: hairHex,
-
-                      )),
-                    );
-                  },
-                  child:
-                  const Text("Next")
+                        )),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color(int.parse(buttonHex.substring(1, 7), radix: 16) + 0xFF000000),
+                      shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50)
+                      ),
+                    ),
+                    child:
+                    const Text(
+                        "Next",
+                      style: TextStyle(
+                          fontSize: 17,
+                          fontFamily: 'LeagueSpartan',
+                          fontWeight: FontWeight.w800
+                      ),
+                    ),
+                ),
               ),
+
             ],
           ),
         ],

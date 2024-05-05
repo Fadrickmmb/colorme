@@ -30,7 +30,7 @@ class _TakeSelfieState extends State<TakeSelfie> {
   Future<void> initCamera() async {
     try{
       cameras = await availableCameras();
-      _controller = CameraController(cameras[0], ResolutionPreset.medium);
+      _controller = CameraController(cameras[0], ResolutionPreset.ultraHigh,);
       await _controller!.initialize();
       setState(() {});
     } catch(e){
@@ -116,54 +116,69 @@ class DisplayPhotoScreen extends StatelessWidget {
               margin: const EdgeInsets.only(
                 top: 10
               ),
-              height: 400,
+              height: MediaQuery.of(context).size.height/2,
               child: Image.file(
                   photo,
                 fit: BoxFit.fitWidth,
+                width: MediaQuery.of(context).size.width / 1.2,
               ),
             )
           ],
           ),
-
-
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              ElevatedButton(
+              SizedBox(
+                width: 140,
+                height: 50,
+                child: ElevatedButton(
                   onPressed: (){
                     Navigator.pop(context);
                   },
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20.0)
-                  ),
-                  backgroundColor: Colors.orangeAccent,
-                  textStyle: const TextStyle(
-                      fontSize: 16.0,
-                      fontWeight: FontWeight.w600,
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50.0)
                     ),
+                    backgroundColor: Colors.orangeAccent,
+                  ),
+                  child: const Text(
+                      'Try Again',
+                      style: TextStyle(
+                          fontSize: 19,
+                          fontFamily: 'LeagueSpartan',
+                          fontWeight: FontWeight.w700
+                      ),
+                  ),
                 ),
-
-                child: const Text('Try Again'),
               ),
-              ElevatedButton(
+              SizedBox(
+                width: 15,
+              ),
+              SizedBox(
+                width: 140,
+                height: 50,
+                child: ElevatedButton(
                   onPressed: (){
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => SecondStep(photo: photo)),
                     );
                   },
-                style: ElevatedButton.styleFrom(
+                  style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0)
+                        borderRadius: BorderRadius.circular(50.0)
                     ),
                     backgroundColor: Colors.deepOrange,
-                  textStyle: const TextStyle(
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.w600,
+                  ),
+                  child: const Text(
+                      'Use Photo',
+                      style: TextStyle(
+                          fontSize: 19,
+                          fontFamily: 'LeagueSpartan',
+                          fontWeight: FontWeight.w700
+                      ),
                   ),
                 ),
-                child: const Text('Use This Photo'),
               ),
             ],
           ),
