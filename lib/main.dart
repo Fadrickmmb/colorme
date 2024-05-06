@@ -121,20 +121,12 @@ class MyApp extends StatelessWidget {
                   ),
                 ),
               ),
-
-
             ],
-              )
+              ),
         ]
-
       ),
     );
   }
 }
 
-void main() {
-  runApp(const MaterialApp(
-    home: MyApp(),
-  ));
-}
 
