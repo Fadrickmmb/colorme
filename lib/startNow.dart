@@ -79,7 +79,7 @@ class StartNow extends StatelessWidget {
                   child: const Text(
                     'Start Now',
                     style: TextStyle(
-                        fontSize: 28,
+                        fontSize: 25,
                         fontFamily: 'LeagueSpartan',
                         fontWeight: FontWeight.w700,
                         color: Colors.white,

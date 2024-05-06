@@ -110,7 +110,9 @@ class _InstructionsState extends State<Instructions> {
                 ),
               ),
             ),
-
+            SizedBox(
+              height: 10,
+            ),
             Expanded(
               child: Stack(
                 alignment: Alignment.bottomRight,

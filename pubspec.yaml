@@ -78,7 +78,6 @@ flutter:
     - assets/2ndStep.png
     - assets/gptlogo.png
     - assets/video.mp4
-    - assets/video2.mp4
     - assets/video3.mp4
   # To add assets to your application, add an assets section, like this:
   # assets:

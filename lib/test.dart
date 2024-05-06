@@ -16,7 +16,7 @@ class _BackgroundVideoState extends State<BackgroundVideo> {
   @override
   void initState() {
     super.initState();
-    _controller = VideoPlayerController.asset('assets/video.mp4')
+    _controller = VideoPlayerController.asset('assets/video3.mp4')
       ..initialize().then((_) {
         _controller.play();
         _controller.setLooping(true);
@@ -56,12 +56,13 @@ class Test extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.transparent,
       body: Stack(
         children: <Widget>[
-          BackgroundVideo(),
+          const BackgroundVideo(),
           Center(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -97,6 +98,39 @@ class Test extends StatelessWidget {
                             size: 100
                         ),
                       ]
+                  ),
+                  SizedBox(
+                    height: 280,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      RichText(
+                        text: TextSpan(
+                            children: [
+                              const TextSpan(
+                                text: 'Powered By ',
+                                style: TextStyle(
+                                  fontFamily: 'LeagueSpartan',
+                                  fontSize: 21,
+                                  fontWeight: FontWeight.w300,
+                                  color: Colors.black,
+                                ),
+                              ),
+                              WidgetSpan(
+                                child: Image.asset(
+                                  'assets/gptlogo.png',
+                                  width: 20,
+                                  height: 20,
+                                ),
+                              ),
+                            ]
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 40,
                   ),
                 ],
               )
