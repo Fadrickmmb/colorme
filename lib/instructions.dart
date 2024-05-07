@@ -23,27 +23,42 @@ class _InstructionsState extends State<Instructions> {
     return MaterialApp(
       home: Scaffold(
         body: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const SizedBox(height: 100),
-            const Text(
-              "colorme.",
-              style: TextStyle(
-                fontSize: 40,
-                fontFamily: 'LeagueSpartan',
-                fontWeight: FontWeight.w800,
-              ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height / 10,
             ),
-            const SizedBox(height: 35),
-            const Text(
-              "Instructions",
-              style: TextStyle(
-                fontSize: 37,
-                fontFamily: 'LeagueSpartan',
-                fontWeight: FontWeight.w700,
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [
+                Text(
+                  'colorme.',
+                  style: TextStyle(
+                    fontSize: 40,
+                    fontFamily: 'LeagueSpartan',
+                    fontWeight: FontWeight.w800,
+                  ),
+                ),
+              ],
             ),
-            const SizedBox(height: 20),
+            SizedBox(
+                height: MediaQuery.of(context).size.height / 30
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [
+                Text(
+                  "Instructions",
+                  style: TextStyle(
+                    fontSize: 37,
+                    fontFamily: 'LeagueSpartan',
+                    fontWeight: FontWeight.w700,
+                  ),
+                )
+              ],
+            ),
+            SizedBox(
+                height: MediaQuery.of(context).size.height / 80,
+            ),
             CarouselSlider.builder(
               itemCount: imagePaths.length,
               itemBuilder: (BuildContext context, int index, int realIndex) {
@@ -53,7 +68,7 @@ class _InstructionsState extends State<Instructions> {
                 );
               },
               options: CarouselOptions(
-                height: 300,
+                height: MediaQuery.of(context).size.height / 3.2,
                 enableInfiniteScroll: true,
                 viewportFraction: 1.0,
                 enlargeCenterPage: false,
@@ -67,7 +82,9 @@ class _InstructionsState extends State<Instructions> {
                 },
               ),
             ),
-            const SizedBox(height: 20),
+            SizedBox(
+                height: MediaQuery.of(context).size.height / 800,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: imagePaths.map((url) {
@@ -75,7 +92,7 @@ class _InstructionsState extends State<Instructions> {
                 return Container(
                   width: 12.0,
                   height: 12.0,
-                  margin: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
+                  margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 2.0),
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: _currentIndex == index ? Colors.black : Colors.grey.shade400,
@@ -83,7 +100,9 @@ class _InstructionsState extends State<Instructions> {
                 );
               }).toList(),
             ),
-            const SizedBox(height: 25),
+            SizedBox(
+                height: MediaQuery.of(context).size.height / 30,
+            ),
             SizedBox(
               width: 180,
               height: 45,
@@ -111,7 +130,7 @@ class _InstructionsState extends State<Instructions> {
               ),
             ),
             SizedBox(
-              height: 10,
+              height: MediaQuery.of(context).size.height / 50,
             ),
             Expanded(
               child: Stack(
@@ -140,5 +159,5 @@ class _InstructionsState extends State<Instructions> {
 
 
 void main() {
-  runApp(Instructions());
+  runApp(const Instructions());
 }

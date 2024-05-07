@@ -44,8 +44,8 @@ class StartNow extends StatelessWidget {
                       WidgetSpan(
                           child: Image.asset(
                             'assets/gptlogo.png',
-                            width: 20,
-                            height: 20,
+                            width: MediaQuery.of(context).size.width / 20,
+                            height: MediaQuery.of(context).size.height / 40,
                           ),
                       ),
                     ]
@@ -66,7 +66,7 @@ class StartNow extends StatelessWidget {
                   onPressed: (){
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => MyApp()),
+                      MaterialPageRoute(builder: (context) => const MyApp()),
                     );
                   },
                   style: ElevatedButton.styleFrom(

@@ -12,22 +12,21 @@ class SecondStep extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
+          SizedBox(
+            height: MediaQuery.of(context).size.height / 17,
+          ),
           Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Container(
-                  margin: const EdgeInsets.only(
-                      top: 50.0,
-                  ),
-                  child: const Text(
-                    "colorme.",
-                    style: TextStyle(
-                      fontSize: 40,
-                      fontFamily: 'LeagueSpartan',
-                      fontWeight: FontWeight.w800,
-                    ),
-                  ),
-                )]
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const [
+              Text(
+                "colorme.",
+                style: TextStyle(
+                  fontSize: 40,
+                  fontFamily: 'LeagueSpartan',
+                  fontWeight: FontWeight.w800,
+                ),
+              ),
+            ],
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -35,10 +34,11 @@ class SecondStep extends StatelessWidget {
               Expanded(
                 flex: 10,
                   child: Align(
-                    alignment: Alignment.center,
+                    //alignment: Alignment.center,
                     child: Image.asset(
                       'assets/2ndStep.png',
                       fit: BoxFit.fitWidth,
+                      height: MediaQuery.of(context).size.height / 1.6,
                     ),
                   ),
               ),
@@ -48,7 +48,7 @@ class SecondStep extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Container(
-                  height: 100,
+                  height: MediaQuery.of(context).size.height / 8,
                   margin: const EdgeInsets.only(
                     top: 1.0,
                   ),
@@ -80,6 +80,7 @@ class SecondStep extends StatelessWidget {
               ]
           ),
           SizedBox(
+            height: MediaQuery.of(context).size.height / 40,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,

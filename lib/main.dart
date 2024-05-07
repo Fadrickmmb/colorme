@@ -10,23 +10,22 @@ class MyApp extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
+          SizedBox(
+              height: MediaQuery.of(context).size.height / 10,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Container(
-                  margin: const EdgeInsets.only(
-                    top: 100.0
-                  ),
-                  child: const Text(
-                    "colorme.",
-                    style: TextStyle(
-                      fontSize: 40,
-                      fontFamily: 'LeagueSpartan',
-                      fontWeight: FontWeight.w800,
-                    ),
-                  ),
-              )]
+            children: const [
+              Text(
+                'colorme.',
+                style: TextStyle(
+                  fontSize: 40,
+                  fontFamily: 'LeagueSpartan',
+                  fontWeight: FontWeight.w800,
+                ),
               ),
+            ],
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -37,7 +36,7 @@ class MyApp extends StatelessWidget {
                         top: 20.0
                     ),
                     alignment: Alignment.center,
-                    height: 350,
+                      height: MediaQuery.of(context).size.height / 2.3,
 
                     child: Align(
                       alignment: Alignment.centerRight,
@@ -51,13 +50,13 @@ class MyApp extends StatelessWidget {
             ]
           ),
           SizedBox(
-            height: 40,
+            height: MediaQuery.of(context).size.height / 50,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Container(
-                height: 100,
+                height: MediaQuery.of(context).size.height / 8.5,
                 margin: const EdgeInsets.only(
                   top: 50.0,
                 ),
@@ -89,7 +88,7 @@ class MyApp extends StatelessWidget {
             ]
           ),
           SizedBox(
-            height: 15,
+            height: MediaQuery.of(context).size.height / 60,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -101,7 +100,7 @@ class MyApp extends StatelessWidget {
                   onPressed: (){
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Instructions()),
+                      MaterialPageRoute(builder: (context) => const Instructions()),
                     );
                   },
                   style: ElevatedButton.styleFrom(
