@@ -39,6 +39,7 @@ class SecondStep extends StatelessWidget {
                       'assets/2ndStep.png',
                       fit: BoxFit.fitWidth,
                       height: MediaQuery.of(context).size.height / 1.6,
+                      width: MediaQuery.of(context).size.width / 1,
                     ),
                   ),
               ),
